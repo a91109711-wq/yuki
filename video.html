@@ -5,101 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>音圓教學影片</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #1a1a1a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            font-family: "Microsoft JhengHei", Arial, sans-serif;
-        }
+        body { margin: 0; padding: 0; background-color: #1a1a1a; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: "Microsoft JhengHei", Arial, sans-serif; flex-direction: column; }
+        .video-wrapper { position: relative; width: 100%; max-width: 1000px; background: #000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        @media (min-width: 600px) { .video-wrapper { width: 90%; border-radius: 12px; overflow: hidden; } }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        
+        /* 讓影片填滿 */
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
 
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 1000px;
-            background: #000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+        .link-btn { position: absolute; top: 15px; right: 15px; z-index: 20; background: rgba(231, 76, 60, 0.9); color: white; padding: 8px 16px; text-decoration: none; font-weight: bold; border-radius: 5px; font-size: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.3); transition: all 0.3s ease; display: flex; align-items: center; gap: 5px; backdrop-filter: blur(5px); }
+        .link-btn:hover { background: rgba(192, 57, 43, 1); transform: scale(1.05); }
+        
+        /* 如果真的不能全螢幕，提供一個備用按鈕 */
+        .fallback-link { margin-top: 20px; color: #888; text-decoration: none; font-size: 0.9rem; border: 1px solid #444; padding: 8px 15px; border-radius: 20px; transition: 0.3s; }
+        .fallback-link:hover { color: #fff; border-color: #fff; }
 
-        @media (min-width: 600px) {
-            .video-wrapper {
-                width: 90%;
-                border-radius: 12px;
-                overflow: hidden;
-            }
-        }
-
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        .link-btn {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            z-index: 20;
-            background: rgba(231, 76, 60, 0.9);
-            color: white;
-            padding: 8px 16px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            font-size: 1rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            backdrop-filter: blur(5px);
-        }
-
-        .link-btn:hover {
-            background: rgba(192, 57, 43, 1);
-            transform: scale(1.05);
-        }
-
-        @media (max-width: 600px) {
-            .link-btn {
-                font-size: 0.9rem;
-                padding: 8px 14px;
-                top: 10px;
-                right: 10px;
-            }
-        }
+        @media (max-width: 600px) { .link-btn { font-size: 0.9rem; padding: 8px 14px; top: 10px; right: 10px; } }
     </style>
 </head>
 <body>
 
     <div class="video-wrapper">
-        
-        <a href="index.html" class="link-btn">
-            🔍 查價平台
-        </a>
-
+        <a href="index.html" class="link-btn">🔍 查價平台</a>
         <div class="video-container">
             <iframe 
                 src="https://drive.google.com/file/d/1LGAZVA_KBr_VPSUCeiNcJpCyoYohgT7c/preview" 
-                allow="autoplay; fullscreen" 
-                allowfullscreen>
+                allow="autoplay; fullscreen; picture-in-picture" 
+                allowfullscreen="true"
+                webkitallowfullscreen="true" 
+                mozallowfullscreen="true">
             </iframe>
         </div>
-
     </div>
+
+    <a href="https://drive.google.com/file/d/1LGAZVA_KBr_VPSUCeiNcJpCyoYohgT7c/view" target="_blank" class="fallback-link">
+        📺 無法全螢幕？點此開啟原始影片
+    </a>
 
 </body>
 </html>
