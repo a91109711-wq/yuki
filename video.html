@@ -8,7 +8,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #1a1a1a; /* 深色質感背景 */
+            background-color: #1a1a1a;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,26 +16,29 @@
             font-family: "Microsoft JhengHei", Arial, sans-serif;
         }
 
-        /* 影片外層容器 */
         .video-wrapper {
             position: relative;
-            width: 90%;
+            width: 100%;
             max-width: 1000px;
             background: #000;
-            border-radius: 12px;
-            overflow: hidden; /* 圓角裁切 */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* 立體陰影 */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* RWD 響應式比例控制 (16:9) */
+        @media (min-width: 600px) {
+            .video-wrapper {
+                width: 90%;
+                border-radius: 12px;
+                overflow: hidden;
+            }
+        }
+
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 比例 */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
         }
 
-        /* 讓 Google 雲端影片充滿容器 */
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -45,14 +48,12 @@
             border: 0;
         }
 
-        /* 右上角的浮動按鈕 */
         .link-btn {
             position: absolute;
             top: 15px;
             right: 15px;
-            z-index: 20; /* 確保在影片上層 */
-            
-            background: rgba(231, 76, 60, 0.9); /* 紅色底 */
+            z-index: 20;
+            background: rgba(231, 76, 60, 0.9);
             color: white;
             padding: 8px 16px;
             text-decoration: none;
@@ -64,19 +65,18 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            backdrop-filter: blur(5px); /* 模糊背景效果 */
+            backdrop-filter: blur(5px);
         }
 
         .link-btn:hover {
             background: rgba(192, 57, 43, 1);
-            transform: scale(1.05); /* 微微放大效果 */
+            transform: scale(1.05);
         }
 
-        /* 手機版微調 */
         @media (max-width: 600px) {
             .link-btn {
-                font-size: 0.8rem;
-                padding: 6px 12px;
+                font-size: 0.9rem;
+                padding: 8px 14px;
                 top: 10px;
                 right: 10px;
             }
@@ -87,12 +87,16 @@
 
     <div class="video-wrapper">
         
-        <a href="https://a91109711-wq.github.io/Iy-picket/" target="_blank" class="link-btn">
+        <a href="index.html" class="link-btn">
             🔍 查價平台
         </a>
 
         <div class="video-container">
-            <iframe src="https://drive.google.com/file/d/1LGAZVA_KBr_VPSUCeiNcJpCyoYohgT7c/preview" allow="autoplay"></iframe>
+            <iframe 
+                src="https://drive.google.com/file/d/1LGAZVA_KBr_VPSUCeiNcJpCyoYohgT7c/preview" 
+                allow="autoplay; fullscreen" 
+                allowfullscreen>
+            </iframe>
         </div>
 
     </div>
